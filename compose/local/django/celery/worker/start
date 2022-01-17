@@ -4,4 +4,4 @@ set -o errexit
 set -o nounset
 
 
-celery -A bk_service.taskapp worker -l INFO
+celery -A demo-auxodev.taskapp worker -l INFO

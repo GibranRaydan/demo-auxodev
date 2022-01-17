@@ -8,7 +8,7 @@ RUN apk update \
   # CFFI dependencies
   && apk add libffi-dev py-cffi \
   # Translations dependencies
-  && apk add gettext \
+  && apk add gettext
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements /requirements
 RUN pip install -r /requirements/local.txt
@@ -16,6 +16,10 @@ RUN pip install -r /requirements/local.txt
 COPY ./compose/local/django/start /start
 RUN sed -i 's/\r//' /start
 RUN chmod +x /start
+
+COPY ./compose/local/django/entrypoint /entrypoint
+RUN sed -i 's/\r//' /entrypoint
+RUN chmod +x /entrypoint
 
 COPY ./compose/local/django/celery/worker/start /start-celeryworker
 RUN sed -i 's/\r//' /start-celeryworker

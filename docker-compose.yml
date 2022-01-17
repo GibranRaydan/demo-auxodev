@@ -5,9 +5,9 @@ services:
     build:
       context: .
       dockerfile: ./compose/local/django/Dockerfile
-    image: bk_service_local_django
-    # env_file:
-    #   - ./.envs/.local/.django
+    image: demo-auxodev_local_django
+    env_file:
+      - ./.envs/.local/.django
     ports:
       - "8000:8000"
     command: /start
@@ -17,7 +17,7 @@ services:
 
   celeryworker:
     <<: *django
-    image: bk_service_local_celeryworker
+    image: demo-auxodev_local_celeryworker
     depends_on:
       - redis
       
@@ -26,7 +26,7 @@ services:
 
   celerybeat:
     <<: *django
-    image: bk_service_local_celerybeat
+    image: demo-auxodev_local_celerybeat
     depends_on:
       - redis
       
@@ -35,7 +35,7 @@ services:
 
   flower:
     <<: *django
-    image: bk_service_local_flower
+    image: demo-auxodev_local_flower
     ports:
       - "5555:5555"
     command: /start-flower

@@ -2,8 +2,6 @@
 pytz==2018.7
 python-slugify==1.2.6
 
-psycopg2==2.9 --no-binary psycopg2
-
 django==3.2.0
 
 # Environment
